@@ -7,9 +7,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={avatar} className="App-logo" alt="logo" />
-        <p>
-          Jomar Verzosa
-        </p>
       </header>
     </div>
   );
