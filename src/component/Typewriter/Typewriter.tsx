@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 
-interface Props {
-  text: string;
-}
-
-const Typewriter: React.FC<Props> = ({ text }) => {
+const Typewriter: React.FC<{ texts: string[] }> = ({ texts }) => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [continueTyping, setContinueTyping] = useState(true);
   const [displayText, setDisplayText] = useState('');
 
   useEffect(() => {
-    let currentText = '';
+    if (!continueTyping) {
+      return;
+    }
+
     let currentIndex = 0;
-
     const intervalId = setInterval(() => {
-      currentText += text[currentIndex];
-      setDisplayText(currentText);
+      setDisplayText(texts[currentTextIndex].slice(0, currentIndex + 1));
       currentIndex++;
-
-      if (currentIndex === text.length) {
+      if (currentIndex >= texts[currentTextIndex].length) {
         clearInterval(intervalId);
+        setTimeout(() => {
+          if ((currentTextIndex + 1) === texts.length) {
+            setContinueTyping(false);
+          }
+          setCurrentTextIndex((currentTextIndex + 1) % texts.length);
+        }, 1300);
       }
     }, 70);
-
     return () => clearInterval(intervalId);
-  }, [text]);
+  }, [currentTextIndex, continueTyping, texts]);
 
   return <h1>{displayText}</h1>;
 };
