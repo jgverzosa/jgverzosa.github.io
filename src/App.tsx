@@ -16,7 +16,7 @@ function App() {
   const timeOfDay = currentHour < 12 ? 'morning' : currentHour < 18 ? 'afternoon' : 'evening';
 
 
-  const words = ["Hello, good " + timeOfDay, "I'm Jomar - a codist", "Nice to meet you"]
+  const words = ["Hello, good " + timeOfDay, "I'm Jomar", "Nice to meet you"]
   return (
     <div className="App">
       <header className="App-header">
