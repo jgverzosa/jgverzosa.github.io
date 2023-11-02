@@ -27,7 +27,9 @@ const Typewriter: React.FC<{ texts: string[] }> = ({ texts }) => {
     return () => clearInterval(intervalId);
   }, [currentTextIndex, continueTyping, texts]);
 
-  return <h1>{displayText}</h1>;
+  return <>
+    <h1>{displayText}</h1>
+  </>;
 };
 
 export default Typewriter;

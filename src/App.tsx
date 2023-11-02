@@ -3,6 +3,7 @@ import avatar from "./avatar.svg";
 import './App.css';
 import Typewriter from './component/Typewriter/Typewriter';
 import TagManager from 'react-gtm-module';
+import Face from './component/Avatar/Face';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={avatar} className="App-logo" alt="logo" />
+        <Face/>
         <Typewriter texts={words} />
       </header>
     </div>
