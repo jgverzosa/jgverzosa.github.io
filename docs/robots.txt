@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemaps
+Sitemap: https://jgverzosa.github.io/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 1

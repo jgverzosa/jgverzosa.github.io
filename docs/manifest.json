@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Jomar Verzosa",
+  "name": "Jomar Verzosa - Software Developer",
+  "description": "Personal website and portfolio of Jomar Verzosa, Software Developer & Full Stack Engineer",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,12 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#282c34",
+  "background_color": "#282c34",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "personal", "developer"],
+  "lang": "en",
+  "scope": "./"
 }
