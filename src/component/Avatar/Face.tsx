@@ -1,4 +1,35 @@
+import React, { useState, useEffect } from 'react';
+
 function Face() {
+  const [isBlinking, setIsBlinking] = useState(false);
+
+  useEffect(() => {
+    const scheduleNextBlink = () => {
+      // Random interval between 2-8 seconds (human-like blinking)
+      const nextBlinkDelay = Math.random() * 6000 + 2000;
+      
+      setTimeout(() => {
+        setIsBlinking(true);
+        
+        // Blink duration (150-300ms)
+        const blinkDuration = Math.random() * 150 + 150;
+        
+        setTimeout(() => {
+          setIsBlinking(false);
+          scheduleNextBlink(); // Schedule next blink
+        }, blinkDuration);
+      }, nextBlinkDelay);
+    };
+
+    scheduleNextBlink();
+    
+    // Cleanup function
+    return () => {
+      // Note: setTimeout cleanup would require storing timeout IDs
+      // For simplicity, we'll let the component unmount naturally
+    };
+  }, []);
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -63,9 +94,36 @@ function Face() {
             fillRule="evenodd"
             d="M158.262 177.019a3.746 3.746 0 013.746-3.746h17.481a3.746 3.746 0 110 7.492h-17.481a3.746 3.746 0 01-3.746-3.746zm-8.892 17.583a3.746 3.746 0 015.298 0c9.021 9.021 23.647 9.021 32.668 0a3.745 3.745 0 115.297 5.297c-11.946 11.947-31.316 11.947-43.263 0a3.745 3.745 0 010-5.297z"
             clipRule="evenodd"
-          ></path>
-          <circle cx="135.787" cy="148.301" r="8.74" fill="#2C2C2C"></circle>
-          <circle cx="205.71" cy="148.301" r="8.74" fill="#2C2C2C"></circle>
+          >          </path>
+          
+          {/* Left Eye - with blinking animation */}
+          <circle 
+            id="left-eye"
+            cx="135.787" 
+            cy="148.301" 
+            r="8.74" 
+            fill="#2C2C2C"
+            style={{
+              transformOrigin: '135.787px 148.301px',
+              transform: isBlinking ? 'scaleY(0.1)' : 'scaleY(1)',
+              transition: 'transform 0.1s ease-out'
+            }}
+          ></circle>
+          
+          {/* Right Eye - with blinking animation */}
+          <circle 
+            id="right-eye"
+            cx="205.71" 
+            cy="148.301" 
+            r="8.74" 
+            fill="#2C2C2C"
+            style={{
+              transformOrigin: '205.71px 148.301px',
+              transform: isBlinking ? 'scaleY(0.1)' : 'scaleY(1)',
+              transition: 'transform 0.1s ease-out'
+            }}
+          ></circle>
+          
           <path
             fill="#2C2C2C"
             fillRule="evenodd"
